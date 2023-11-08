@@ -4,10 +4,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: sans-serif;
 }
 
 .game-container {
     text-align: center;
+    position: relative;
 }
 
 .game-grid {
@@ -16,22 +18,26 @@ body {
     flex-wrap: wrap;
     width: 200px;
     height: 200px;
-    border: 2px solid #00f124;
+    border: 2px solid #967826;
     padding: 30px;
     justify-content: space-evenly;
     border-radius: 10px;
+    margin: 0 auto;
 }
 
 .game-cell {
     width: 25px;
     height: 25px;
-    background: #83b28a;
+    background: #dead40;
     cursor: pointer;
 }
 
 .tries {
     margin-top: 10px;
     font-size: 1.5em;
+    font-weight: bold;
+    color: #967826;
+
 }
 
 .reset-button {
@@ -47,4 +53,19 @@ body {
 
 .reset-button:hover {
     background-color: #ff3338;
+}
+
+.diamond-found-message {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #00f124;
+    font-weight: bold;
+}
+
+.reset-info {
+    padding-top: 10px;
+    font-weight: normal;
+    color: black;
+    font-size: 1em;
 }

@@ -18,7 +18,10 @@ const createGameCells = () => {
 const Game = () => {
     const  [cells, setCells] = useState(createGameCells());
     const [tries, setTries] = useState(0);
+    const [diamondFound, setDiamondFound] = useState(false);
     const onCellClick = (index: number) => {
+        if (diamondFound) return;
+
         setCells( (prevState) => {
             return prevState.map((cell, i) => {
                 if (i === index) {
@@ -28,11 +31,16 @@ const Game = () => {
             });
         });
         setTries(prevState => prevState + 1);
+
+        if (cells[index].hasItem) {
+            setDiamondFound(true);
+        }
     };
 
     const reset = () => {
         setCells(createGameCells());
         setTries(0);
+        setDiamondFound(false);
     };
 
     return (
@@ -45,7 +53,7 @@ const Game = () => {
                     style={{background: cell.clicked ? 'white' : undefined}}
                     onClick={() => onCellClick(index)}
                     >
-                    {cell.clicked && cell.hasItem && '💼'}
+                    {cell.clicked && cell.hasItem && '💎'}
                 </div>
             ))}
         </div>
@@ -53,7 +61,13 @@ const Game = () => {
                 <div className='tries'>
                     Tries: {tries}
                 </div>
+                {diamondFound &&
+                    <div className='diamond-found-message'>
+                         Congratulations! The diamond is found!
+                    </div>
+                }
                 <button className='reset-button' onClick={reset}>Reset</button>
+                {diamondFound && <div className='reset-info'>Press reset to start the game!</div>}
             </div>
         </>
     );
