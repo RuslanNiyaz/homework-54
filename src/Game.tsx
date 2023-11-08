@@ -17,6 +17,7 @@ const createGameCells = () => {
 
 const Game = () => {
     const  [cells, setCells] = useState(createGameCells());
+    const [tries, setTries] = useState(0);
     const onCellClick = (index: number) => {
         setCells( (prevState) => {
             return prevState.map((cell, i) => {
@@ -26,9 +27,16 @@ const Game = () => {
                 return cell;
             });
         });
+        setTries(prevState => prevState + 1);
+    };
+
+    const reset = () => {
+        setCells(createGameCells());
+        setTries(0);
     };
 
     return (
+        <>
         <div className='game-grid'>
             {cells.map((cell, index) => (
                 <div
@@ -36,9 +44,18 @@ const Game = () => {
                     className='game-cell'
                     style={{background: cell.clicked ? 'white' : undefined}}
                     onClick={() => onCellClick(index)}
-                />
+                    >
+                    {cell.clicked && cell.hasItem && '💼'}
+                </div>
             ))}
         </div>
+            <div className='game-container'>
+                <div className='tries'>
+                    Tries: {tries}
+                </div>
+                <button className='reset-button' onClick={reset}>Reset</button>
+            </div>
+        </>
     );
 };
 
