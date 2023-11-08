@@ -1,17 +1,50 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+}
+
 .game-grid {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
     width: 200px;
     height: 200px;
+    border: 2px solid #00f124;
     padding: 30px;
-    border: 1px solid black;
     justify-content: space-evenly;
+    border-radius: 10px;
 }
 
 .game-cell {
     width: 25px;
     height: 25px;
-    background: grey;
+    background: #83b28a;
     cursor: pointer;
+}
+
+.tries {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.reset-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #ff5a5f;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    background-color: #ff3338;
 }
